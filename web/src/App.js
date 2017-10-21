@@ -7,6 +7,7 @@ import './App.css';
 import Loginscreen from './Screens/Loginscreen';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import NavBar from './Screens/NavBar';
+import BottomNavBar from './Screens/BottomNavBar';
 
 class App extends Component {
     constructor(props) {
@@ -28,7 +29,7 @@ class App extends Component {
         return (
             <div className="App">
                 <MuiThemeProvider>
-                <NavBar title={this.state.title}/>
+                <NavBar title={this.state.title} appContext={this}/>
                     {this.state.main}
                 </MuiThemeProvider>
             </div>

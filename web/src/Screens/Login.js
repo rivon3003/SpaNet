@@ -16,22 +16,40 @@ class Login extends Component {
     }
 
     handleClick(event) {
-        var apiBaseUrl = "http://localhost:4000/api/";
+        var apiBaseUrl = "http://localhost:8888/api/";
         var self = this;
         var payload = {
             "email": this.state.username,
             "password": this.state.password
         }
-        axios.post(apiBaseUrl + 'login', payload)
+
+        var config = {
+            method: 'get',
+            url: apiBaseUrl + 'login',
+            data: payload,
+            headers: {
+                'Content-Type': 'application/json'
+              }
+        };
+
+        axios({
+            method: 'post',
+            url: apiBaseUrl + 'login',
+            data: payload,
+            headers: {
+                'Content-Type': 'application/json',
+                
+              }
+        })
             .then(function (response) {
                 console.log(response);
-                if (response.data.code == 200) {
+                if (response.status == 200) {
                     console.log("Login successfull");
-                    var uploadScreen = [];
-                    uploadScreen.push(<UploadScreen appContext={self.props.appContext} />)
-                    self.props.appContext.setState({ main: uploadScreen })
+                    var mainScreen = [];
+                    mainScreen.push(<Main appContext={self.props.appContext} />)
+                    self.props.appContext.setState({ main: mainScreen })
                 }
-                else if (response.data.code == 204) {
+                else if (response.status == 204) {
                     console.log("Username password do not match");
                     alert("username password do not match")
                 }
@@ -44,11 +62,11 @@ class Login extends Component {
                 console.log(error);
             });
 
-        //Todo: Pass login - Remove after completing API 
-        console.log("Login successfull");
-        var mainScreen = [];
-        mainScreen.push(<Main appContext={self.props.appContext}/>)
-        self.props.appContext.setState({ main: mainScreen});
+        // //Todo: Pass login - Remove after completing API 
+        // console.log("Login successfull");
+        // var mainScreen = [];
+        // mainScreen.push(<Main appContext={self.props.appContext}/>)
+        // self.props.appContext.setState({ main: mainScreen});
     }
 
     render() {

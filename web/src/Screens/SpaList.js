@@ -121,7 +121,7 @@ export default class SpaList extends Component {
 
     render() {
         return (
-            <div style={[styles.root, this.show()]}>
+            <div style={styles.root, this.show()}>
         <GridList
             cellHeight={180}
             style={styles.gridList}
