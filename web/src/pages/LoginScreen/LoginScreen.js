@@ -53,7 +53,7 @@ class LoginScreen extends Component {
     }
     render() {
         return (
-            <div className="loginscreen">
+            <div className="loginscreen" key={Date.now()}>
                 {this.state.loginscreen}
                 <div>
                     {this.state.loginmessage}

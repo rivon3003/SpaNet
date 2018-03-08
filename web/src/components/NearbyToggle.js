@@ -26,7 +26,7 @@ const styles = {
   },
 };
 
-const NearbySpaToggle = (props) => (
+const NearbyToggle = (props) => (
   <div style={styles.block}>
         <Toggle
         label="Spa gần tôi"
@@ -38,4 +38,4 @@ const NearbySpaToggle = (props) => (
   </div>
 );
 
-export default NearbySpaToggle;
+export default NearbyToggle;

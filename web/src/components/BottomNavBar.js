@@ -3,10 +3,14 @@ import FontIcon from 'material-ui/FontIcon';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
-import NearbySpaToggle from './NearbySpaToggle';
+import NearbyToggle from './NearbyToggle';
+import {blue500, red500, greenA200} from 'material-ui/styles/colors';
+const iconStyles = {
+  marginRight: 24,
+};
 
-const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
-const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
+const recentsIcon = <FontIcon className="material-icons" style={iconStyles}>history</FontIcon>
+const favoritesIcon = <FontIcon className="material-icons">favorite_border</FontIcon>;
 const nearbyIcon = <IconLocationOn />;
 
 /**
@@ -15,17 +19,25 @@ const nearbyIcon = <IconLocationOn />;
  * state (for instance, by the URL).
  */
 class BottomNavBar extends Component {
-  state = {
-    selectedIndex: 0,
-  };
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      selectedIndex: 0,
+    };
+  }
 
-  select = (index) => this.setState({selectedIndex: index});
-
-  handleNearby() {
-    var self = this;
-    const isNearbyMode = self.props.appContext.state.isNearbyMode ? false : true;
-    self.props.appContext.setState({ isNearbyMode: isNearbyMode });
-}
+  select = (index, isNearbyMode) => {
+    this.setState({selectedIndex: index});
+    if(isNearbyMode)
+    {
+      this.props.home.setState({ isNearbyMode: true });
+    }
+    else
+    {
+      this.props.home.setState({ isNearbyMode: false });
+    } 
+  }
 
   render() {
     return (
@@ -44,9 +56,8 @@ class BottomNavBar extends Component {
           <BottomNavigationItem
             label="Nearby"
             icon={nearbyIcon}
-            onClick={() => this.select(2)}
+            onClick={() => this.select(2, true)}
           />
-          <NearbySpaToggle onToggle={() => this.handleNearby()} />
         </BottomNavigation>
       </Paper>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from 'material-ui-search-bar';
 import { DistrictFilter, SpaList, SpaMap } from './components';
-import { NearbySpaToggle } from 'components'
+import { NearbyToggle, BottomNavBar } from 'components'
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -22,11 +22,11 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <BottomNavBar home={this} handleNearby={this.handleNearby}/>   
                 <SearchBar
                     onChange={() => console.log('onChange')}
                     onRequestSearch={() => console.log('onRequestSearch')}
                 />
-                <NearbySpaToggle onToggle={() => this.handleNearby()} />
                 <DistrictFilter isNearbyMode={this.state.isNearbyMode} />
                 <SpaList isNearbyMode={this.state.isNearbyMode} appContext = {this.props.appContext} />
                 <SpaMap
@@ -36,7 +36,7 @@ class Home extends Component {
                     loadingElement={<div style={{ height: `100%` }} />}
                     containerElement={<div style={{ height: `400px` }} />}
                     mapElement={<div style={{ height: `100%` }} />}
-                />
+                />             
             </div>
         );
     }

@@ -18,7 +18,7 @@ class App extends Component {
     }
     componentWillMount() {
         var loginPage = [];
-        loginPage.push(<LoginScreen parentContext={this} appContext={this} />);
+        loginPage.push(<LoginScreen parentContext={this} appContext={this} key="1" />);
         this.setState({
             main: loginPage,
             title: "Login"
@@ -26,10 +26,11 @@ class App extends Component {
     }
     render() {
         return (
-            <div className="App">
-                <MuiThemeProvider>
+            <div className="App" key="divContainer">
+                <MuiThemeProvider key="mtp">
                 <NavBar title={this.state.title} appContext={this}/>
                     {this.state.main}
+                {/* <BottomNavBar appContext={this.state.main}/> */}
                 </MuiThemeProvider>
             </div>
         );
