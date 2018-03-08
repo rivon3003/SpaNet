@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import SearchBar from 'material-ui-search-bar';
-import DistrictFilter from './DistrictFilter';
-import NearbySpaToggle from './NearbySpaToggle';
-import SpaList from './SpaList';
-import SpaMap from './SpaMap';
-
-class Main extends Component {
+import { DistrictFilter, SpaList, SpaMap } from './components';
+import { NearbySpaToggle } from 'components'
+class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -44,5 +41,5 @@ class Main extends Component {
         );
     }
 }
-export default Main;
+export default Home;
 

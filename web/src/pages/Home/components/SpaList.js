@@ -122,23 +122,23 @@ export default class SpaList extends Component {
     render() {
         return (
             <div style={styles.root, this.show()}>
-        <GridList
-            cellHeight={180}
-            style={styles.gridList}
-            cols={4}
-        >
-            {tilesData.map((tile) => (
-                <GridTile
-                    key={tile.img}
-                    title={tile.title}
-                    subtitle={<span>by <b>{tile.author}</b></span>}
-                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                    titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                <GridList
+                    cellHeight={180}
+                    style={styles.gridList}
+                    cols={4}
                 >
-                    <img src={tile.img} onClick={(event) => this.handleClick(event)}/>
-                </GridTile>
-            ))}
-        </GridList>
+                    {tilesData.map((tile) => (
+                        <GridTile
+                            key={tile.img}
+                            title={tile.title}
+                            subtitle={<span>by <b>{tile.author}</b></span>}
+                            actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+                            titleBackground="linear-gradient(to bottom, rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.3) 70%,rgba(0,0,0,0) 100%)"
+                        >
+                            <img src={tile.img} onClick={(event) => this.handleClick(event)}/>
+                        </GridTile>
+                    ))}
+                </GridList>
             </div >
         )
     }

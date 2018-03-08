@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
-import Toggle from 'material-ui/Toggle';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { AppBar, IconButton, IconMenu, MenuItem, } from 'material-ui';
+import { FlatButton, Toggle } from 'material-ui';
+import MoreVertIcon  from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
-import CreateSpa from './CreateSpa'
-import MyAccount from './MyAccount'
-import MySpa from './MySpa'
-import Main from './Main';
-import Loginscreen from './Loginscreen';
+import { MyAccount, MySpa, Home, LoginScreen } from 'pages'
 
 const styles = {
     loggedToggle: {
@@ -24,7 +16,7 @@ class Login extends Component {
     handleBtnLogin(event){
         var self = this;
         var loginPage = [];
-        loginPage.push(<Loginscreen parentContext={this} appContext={self.props.appContext} />);
+        loginPage.push(<LoginScreen parentContext={this} appContext={self.props.appContext} />);
         self.props.appContext.setState({
             main: loginPage,
             title: "Đăng nhập"
@@ -95,7 +87,7 @@ class NavBar extends Component {
     handleClose(event){
         var self = this;
         var mainScreen = [];
-        mainScreen.push(<Main appContext={self.props.appContext} />)
+        mainScreen.push(<Home appContext={self.props.appContext} />)
         self.props.appContext.setState({ main: mainScreen })
     }
 

@@ -1,3 +1,3 @@
-setState = (appContext, newMainScreen){
+setState = (appContext, newMainScreen) => {
     
 }

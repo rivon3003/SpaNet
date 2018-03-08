@@ -3,8 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import axios from 'axios';
-import UploadScreen from './Upload';
-import Main from './Main';
+import { Home } from 'pages';
 
 class Login extends Component {
     constructor(props) {
@@ -46,7 +45,7 @@ class Login extends Component {
                 if (response.status == 200) {
                     console.log("Login successfull");
                     var mainScreen = [];
-                    mainScreen.push(<Main appContext={self.props.appContext} />)
+                    mainScreen.push(<Home appContext={self.props.appContext} />)
                     self.props.appContext.setState({ main: mainScreen })
                 }
                 else if (response.status == 204) {

@@ -4,10 +4,9 @@ import React, { Component } from 'react';
 // http://stackoverflow.com/a/34015469/988941
 // injectTapEventPlugin();
 import './App.css';
-import Loginscreen from './Screens/Loginscreen';
+import { LoginScreen } from './pages';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import NavBar from './Screens/NavBar';
-import BottomNavBar from './Screens/BottomNavBar';
+import { NavBar, BottomNavBar } from 'components';
 
 class App extends Component {
     constructor(props) {
@@ -19,7 +18,7 @@ class App extends Component {
     }
     componentWillMount() {
         var loginPage = [];
-        loginPage.push(<Loginscreen parentContext={this} appContext={this} />);
+        loginPage.push(<LoginScreen parentContext={this} appContext={this} />);
         this.setState({
             main: loginPage,
             title: "Login"
